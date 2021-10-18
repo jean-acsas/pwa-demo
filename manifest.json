@@ -1,7 +1,7 @@
 {
     "name": "PWADemo",
     "short_name": "PWADemo",
-    "start_url": "/?home=true",
+    "start_url": "/index.html",
     "icons": [{
             "src": "icons/manifest-icon-192.maskable.png",
             "sizes": "192x192",

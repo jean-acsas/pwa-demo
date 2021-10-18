@@ -1,4 +1,4 @@
-This is a showcase of a basic PWA as well as some background and instruction to build one yourself. Check out the live demo [here](https://pwa-dem0.netlify.app)
+This is a showcase of a basic Progressive Web App (PWA) as well as some background info and instructions on how to build one yourself. Check out the live demo [here](https://pwa-dem0.netlify.app).
 
 # Build a PWA yourself
 
@@ -17,8 +17,8 @@ Within our manifest.json we can define  info about our app. Here is some example
 ```json
 {
     "name": "PWADemo",
-    "short_name": "PWADemos",
-    "start_url": "/?home=true",
+    "short_name": "PWADemo",
+    "start_url": "/index.html",
     "icons": [],
     "theme_color": "#317efb",
     "background_color": "#317efb",
@@ -27,7 +27,7 @@ Within our manifest.json we can define  info about our app. Here is some example
 }
 ```
 
-We place a reference to our manifest above the closing `</head>` tag of our index.html:
+Within our index.html, we place a reference to our manifest above the closing `</head>` tag:
 
 ```html
 <link rel="manifest" href="manifest.json">
@@ -49,7 +49,7 @@ We call the generator with four arguments:
 
 Next up is the implementation of the service worker. The service workers role is to make the website/app ready for offline use by enabling caching, dealing with push notifications, and more. 
 
-The service worker your be implemented by hand, this example however uses [Workbox](https://developers.google.com/web/tools/workbox) to help us with this. Workbox is a set of libraries that help you build PWAs. Should you use React, Vue or a similar framework, chances are it already comes packed with tooling to set up your service worker.
+The service worker could be implemented by hand, however, in this example we use [Workbox](https://developers.google.com/web/tools/workbox) to help us with this. Workbox is a set of libraries that help you build PWAs. Should you use React, Vue or a similar framework, chances are it already comes pre-packed with tooling for setting up your service worker.
 
 For this showcase we import Workbox from a CDN:
 
@@ -58,7 +58,7 @@ importScripts('https://storage.googleapis.com/workbox-cdn/releases/6.2.0/workbox
 ```
 
 Then we can use the routing module to register a route that matches all the image files in our project.
-Then matched all the files, we need to decide on a caching strategy.
+We need to decide on a caching strategy here:
 
 ```js
 workbox.routing.registerRoute(
@@ -70,6 +70,7 @@ workbox.routing.registerRoute(
 CacheFirst() means the PWA will try to read from the cache first, which is useful for content that don't change often. Alternatively, you might want to use the NetworkFirst() strategy.
 
 Finally, we register our service worker within a `<script>` above the closing `</body>` tag of our index.html.
+
 ```html
 <script>
     if ('serviceWorker' in navigator) {
@@ -86,22 +87,24 @@ Now let's serve the app. For this, either open the index.html with a live server
 npx serve
 ```
 
-Open a browser and navigate to `localhost:5000`.
+Open a browser and navigate to http://localhost:5000.
 
 ## Check out Lighthouse to see the PWA badge
 
-Either use Chrome/Chromium or add Lighthouse as a plugin to our browser.
+Lighthouse not only analyzes your sites performance, accessibility, and SEO, but also determines whether or not your app is installable as a PWA.
+
+Lighthouse comes preinstalled with Chrome/Chromium, other browsers often provide a plugin.
 
 In case of Chrome/Chromium: 
 
-- open up Chrome Dev Tools
+- open up Dev Tools
 - go to the Application tab 
 - see how the icons appear in our manifest (Application->Manifest).
 - check the status of the service worker, which should be running. 
-- finally go to the chrome dev tools Lighthouse tab and run an audit on the app. There, you will see a PWA achievement badge. This means the app is now installable on most mobile devices. 
+- finally go to the chrome dev tools Lighthouse tab and run an audit on the app. There, you will see a PWA achievement badge. This means the app is now installable on most mobile devices.
 
 ## Deploy and share your app
 
-You can now deploy your app, so you or others can download it and use it on their devices. This can be done via the installation popup that appears automatically or the context menu when visiting the site. 
+You can now deploy your app. For hosting a PWA based on a static website any static hosting should do. This [live demo](https://pwa-dem0.netlify.app) is deployed on [Netlify](https://www.netlify.com).
 
-For hosting a PWA based on a static website any static hosting should do. For this [live demo](https://pwa-dem0.netlify.app) [Netlify](https://www.netlify.com) was used.
+Others can now download and use the app by visiting the site. The app can be installed either via the installation popup that appears automatically or via the browsers context menu.
