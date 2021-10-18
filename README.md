@@ -108,3 +108,7 @@ In case of Chrome/Chromium:
 You can now deploy your app. For hosting a PWA based on a static website any static hosting should do. This [live demo](https://pwa-dem0.netlify.app) is deployed on [Netlify](https://www.netlify.com).
 
 Others can now download and use the app by visiting the site. The app can be installed either via the installation popup that appears automatically or via the browsers context menu.
+
+## Note
+
+This might not work on (on your version of) iOS.
