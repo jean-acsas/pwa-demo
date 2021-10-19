@@ -67,7 +67,7 @@ workbox.routing.registerRoute(
 )
 ```
 
-CacheFirst() means the PWA will try to read from the cache first, which is useful for content that don't change often. Alternatively, you might want to use the NetworkFirst() strategy.
+CacheFirst() means the PWA will try to read from the cache first, which is useful for content that doesn't change often. Alternatively, you might want to use the NetworkFirst() strategy.
 
 Finally, we register our service worker within a `<script>` above the closing `</body>` tag of our index.html.
 
@@ -111,4 +111,4 @@ Others can now download and use the app by visiting the site. The app can be ins
 
 ## Note
 
-This might not work on (on your version of) iOS.
+This might not work on (your version of) iOS.
