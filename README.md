@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/f01cc588-705a-413d-b569-e0e44dc14e46/deploy-status)](https://app.netlify.com/sites/pwa-dem0/deploys)
+
 This is a showcase of a basic Progressive Web App (PWA) as well as some background info and instructions on how to build one yourself. Check out the live demo [here](https://pwa-dem0.netlify.app).
 
 # Build a PWA yourself
